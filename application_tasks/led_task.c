@@ -6,12 +6,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "../main.h"
 
-/**
- * This task reads analog input values from the queue, then updates the LEDs
- * to display the value like a bar graph.
- */
 void led_initialization()
 {
     /* Configuration of GPIOs */
@@ -28,5 +23,6 @@ void led_initialization()
 void led_task(void* args)
 {
     while (1) {
+        taskYIELD();
     }
 }

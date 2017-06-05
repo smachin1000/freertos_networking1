@@ -10,8 +10,6 @@
 #include "task.h"
 #include "queue.h"
 
-#include "main.h"
-
 #define SYS_TICK_CTRL_AND_STATUS_REG      0xE000E010
 #define SYS_TICK_CONFIG_REG               0xE0042038
 #define SYS_TICK_FCLK_DIV_32_NO_REF_CLK   0x31000000
@@ -19,7 +17,7 @@
 
 extern void led_task(void *para);
 extern void led_initialization(void);
-extern void web_task(void *para);
+extern void network_task(void *para);
 
 static void init_system()
 {
@@ -51,8 +49,8 @@ int main()
         return EXIT_FAILURE;
     }
 
-    c = xTaskCreate( web_task,
-                 ( signed portCHAR * ) "web_task",
+    c = xTaskCreate( network_task,
+                 ( signed portCHAR * ) "network_task",
                  configMINIMAL_STACK_SIZE * 2,
                  NULL,
                  tskIDLE_PRIORITY +1,
@@ -72,6 +70,6 @@ int main()
 
     /* Will only get here if there was not enough heap space to create the
     idle task. */
-    printf("\r\nScheduler has quit, should never come here \n\r");
+    printf("Scheduler has quit, should never come here\n\r");
     return EXIT_FAILURE;
 }
