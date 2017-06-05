@@ -16,7 +16,7 @@
 #define MAC_BASE_ADDRESS            0x40003000
 
 
-extern char ethAddr[6];
+extern char ETH0_MAC_ADDRESS[6];
 
 unsigned char my_ip[IP_ADDR_LEN]={192,168,0,14};
 unsigned char my_mac[ETH_ADDR_LEN]={0xAA,0xBB,0xCC,0x11,0x22,0x33};
@@ -268,7 +268,7 @@ void send_bootp_packet (unsigned char *buf)
     memcpy(eth_hdr->sa, my_mac, ETH_ADDR_LEN);
     memset(eth_hdr->da, 0xFF, ETH_ADDR_LEN); /* broadcast */
     num_pkt_tx++;
-    MSS_MAC_tx_packet(tcp_packet,plen + sizeof(ether_hdr_t), MSS_MAC_BLOCKING);
+    MSS_MAC_tx_packet(tcp_packet, plen + sizeof(ether_hdr_t), MSS_MAC_BLOCKING);
 }
 /***************************************************************************//**
  *  See tcpip.h for more information.
@@ -710,7 +710,7 @@ unsigned char process_packet( unsigned char * buf )
 {
     eth_hdr_xp eth_hdr;
     unsigned char typ;
-    eth_hdr = (eth_hdr_xp ) buf;
+    eth_hdr = (eth_hdr_xp )buf;
     typ = eth_hdr->type_code[0];
     if (typ != ETH_TYPE_0)
     {

@@ -19,6 +19,7 @@
 
 extern void led_task(void *para);
 extern void led_initialization(void);
+extern void web_task(void *para);
 
 static void init_system()
 {
@@ -47,6 +48,17 @@ int main()
 
     if (c != pdPASS) {
         printf("task create led_task failed with code %d, exiting\r\n", c);
+        return EXIT_FAILURE;
+    }
+
+    c = xTaskCreate( web_task,
+                 ( signed portCHAR * ) "web_task",
+                 configMINIMAL_STACK_SIZE * 2,
+                 NULL,
+                 tskIDLE_PRIORITY +1,
+                 NULL );
+    if (c != pdPASS) {
+        printf("task create web_task failed with code %d, exiting\r\n", c);
         return EXIT_FAILURE;
     }
 
