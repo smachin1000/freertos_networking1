@@ -38,6 +38,9 @@
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/freertos_networking1/FreeRTOS/Source/portable}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/freertos_networking1/FreeRTOS/Source/portable/GCC/ARM_CM3}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/freertos_networking1/port_config}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/freertos_networking1/uipstack}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/freertos_networking1/webserver}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/freertos_networking1/webserver/httpd-fs}&quot;"/>
 </option>
 <option id="gnu.c.compiler.option.preprocessor.def.symbols.1758474320" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 <listOptionValue builtIn="false" value="ACTEL_STDIO_THRU_UART"/>

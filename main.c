@@ -30,29 +30,18 @@ static void init_system()
     led_initialization();
 } 
 
-static task_arg_t ta;
-
 int main()
 {
     int c;
     /* Initialization all necessary hardware components */
     init_system();
 
-    ta.QUEUE_LENGTH = 10;
-
-    // Create a queue for task IPC
-    ta.queue_h = xQueueCreate((unsigned portBASE_TYPE)ta.QUEUE_LENGTH, sizeof(uint16_t));
-    if (ta.queue_h == NULL) {
-        printf("\r\nxQueueCreate failed, check there is enough heap memory allocated\r\n");
-        return EXIT_FAILURE;
-    }
-
     // Note that we create two tasks with the same priority.
     // FreeRTOS manages time slicing between equal priority tasks.
     c = xTaskCreate( led_task,                          // task "run" function
                      ( signed portCHAR * ) "led_task",  // task name
                      configMINIMAL_STACK_SIZE,          // task stack size in 32 bit words (not bytes)
-                     &ta,                               // param to pass to run function
+                     NULL,                              // param to pass to run function
                      tskIDLE_PRIORITY + 1,              // task priority
                      NULL );                            // task handle
 
@@ -71,6 +60,6 @@ int main()
 
     /* Will only get here if there was not enough heap space to create the
     idle task. */
-    printf("\r\nScheduler has quit, sShould never come here \n\r");
+    printf("\r\nScheduler has quit, should never come here \n\r");
     return EXIT_FAILURE;
 }
