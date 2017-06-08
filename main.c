@@ -19,6 +19,13 @@ extern void led_task(void *para);
 extern void led_initialization(void);
 extern void network_task(void *para);
 
+// Disable STDIO buffering for serial I/O
+static void configure_buffering()
+{
+    setvbuf(stdout, 0, _IONBF, 0);
+    setvbuf(stdin, 0, _IONBF, 0);
+}
+
 static void init_system()
 {
     /* Disable the Watch Dog Timer */
@@ -34,6 +41,8 @@ int main()
     int c;
     /* Initialization all necessary hardware components */
     init_system();
+
+    configure_buffering();
 
     // Note that we create two tasks with the same priority.
     // FreeRTOS manages time slicing between equal priority tasks.
