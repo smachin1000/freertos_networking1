@@ -8,7 +8,6 @@
 
 #include "FreeRTOS.h"
 #include "task.h"
-#include "queue.h"
 
 #define SYS_TICK_CTRL_AND_STATUS_REG      0xE000E010
 #define SYS_TICK_CONFIG_REG               0xE0042038

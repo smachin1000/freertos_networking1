@@ -119,16 +119,9 @@ typedef unsigned short uip_stats_t;
 //
 #define UIP_CONF_BYTE_ORDER         LITTLE_ENDIAN
 
-//
-// Here we include the header file for the application we are using in
-// this example
-//
-#include "httpd.h"
 
-//
-// Define the uIP Application State type, based on the httpd.h state variable.
-//
-typedef struct httpd_state uip_tcp_appstate_t;
+static void dummy();
+static void dummy() {};
 
 //
 // UIP_APPCALL: the name of the application function. This function
@@ -136,7 +129,7 @@ typedef struct httpd_state uip_tcp_appstate_t;
 // appfunc(void)").
 //
 #ifndef UIP_APPCALL
-#define UIP_APPCALL     httpd_appcall
+#define UIP_APPCALL     dummy
 #endif
 
 #endif // __UIP_CONF_H_

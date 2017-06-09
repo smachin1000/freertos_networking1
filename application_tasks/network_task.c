@@ -36,7 +36,6 @@
 
 #include "uip.h"
 #include "uip_arp.h"
-#include "httpd.h"
 
 /**************************************************************************/
 /* Definitions for Ethernet test */
@@ -174,9 +173,6 @@ void uIP_init()
     sTempAddr.addr[5] = ETH0_MAC_ADDRESS[5];
 
     uip_setethaddr(sTempAddr);
-
-    /* init application */
-    httpd_init();
 }
 
 void network_task(void *para)
@@ -255,6 +251,7 @@ void network_task(void *para)
                     uip_len = 0;
                 }
             }
+            // Perform periodic ARP processing
             uip_arp_timer();
         }
     }

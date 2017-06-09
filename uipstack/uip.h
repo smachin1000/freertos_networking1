@@ -1176,9 +1176,6 @@ struct uip_conn {
   u8_t timer;         /**< The retransmission timer. */
   u8_t nrtx;          /**< The number of retransmissions for the last
 			 segment sent. */
-
-  /** The application state. */
-  uip_tcp_appstate_t appstate;
 };
 
 

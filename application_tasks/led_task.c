@@ -16,8 +16,10 @@ void led_initialization()
     MSS_GPIO_config(MSS_GPIO_3, MSS_GPIO_OUTPUT_MODE );
     MSS_GPIO_config(MSS_GPIO_4, MSS_GPIO_OUTPUT_MODE );
     MSS_GPIO_config(MSS_GPIO_5, MSS_GPIO_OUTPUT_MODE );
-    MSS_GPIO_config(MSS_GPIO_6 , MSS_GPIO_OUTPUT_MODE );
+    MSS_GPIO_config(MSS_GPIO_6, MSS_GPIO_OUTPUT_MODE );
     MSS_GPIO_config(MSS_GPIO_7, MSS_GPIO_OUTPUT_MODE );
+
+    MSS_GPIO_set_outputs(0xffffffff);
 }
 
 void led_task(void* args)
