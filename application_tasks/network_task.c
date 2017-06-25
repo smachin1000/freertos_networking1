@@ -117,6 +117,7 @@ void init_mac()
     time_out = 0;
     
     // Try and get an IP address via BOOTP
+    printf("\r\nAttempting to get IP address via BOOTP...\r\n");
     do
     {
         send_bootp_packet(0);
@@ -135,10 +136,10 @@ void init_mac()
     }while((!dhcp_ip_found) && (time_out < 7000000));
 
     if (dhcp_ip_found) {
-    	printf("IP address = %d.%d.%d.%d\r\n", my_ip[0], my_ip[1], my_ip[2], my_ip[3]);
+    	printf("\r\nIP address = %d.%d.%d.%d\r\n", my_ip[0], my_ip[1], my_ip[2], my_ip[3]);
     }
     else {
-    	printf("BOOTP could not assign address\r\n");
+    	printf("\r\nBOOTP could not assign address\r\n");
     }
     fflush(stdout);
 }
